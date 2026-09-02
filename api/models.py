@@ -7,6 +7,9 @@ class Department(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=255)
 
+    def __str__(self):
+        return self.name
+
 
 class Course(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -18,6 +21,9 @@ class Course(models.Model):
         blank=True,
     )
     name = models.CharField(max_length=255)
+
+    def __str__(self):
+        return f"{self.department.name} - {self.name}"
 
 
 class Participant(models.Model):
@@ -32,6 +38,9 @@ class Participant(models.Model):
     )
     semester = models.IntegerField(blank=True, null=True)
 
+    def __str__(self):
+        return self.anonymousIdentifier
+
 
 class Visit(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -44,3 +53,6 @@ class Visit(models.Model):
     endTime = models.TimeField(null=True, blank=True)
     date = models.DateField()
     courses = models.ManyToManyField(Course, related_name="visits", blank=True)
+
+    def __str__(self):
+        return f"{self.participant.anonymousIdentifier} - {self.date}"
