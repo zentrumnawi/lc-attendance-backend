@@ -11,7 +11,7 @@ class DepartmentAdmin(admin.ModelAdmin):
 
 @admin.register(Course)
 class CourseAdmin(admin.ModelAdmin):
-    list_display = ("name", "department", "id")
+    list_display = ("name", "department")
     list_filter = ("department",)
     search_fields = ("name",)
 
@@ -25,7 +25,7 @@ class ParticipantAdmin(admin.ModelAdmin):
 
 @admin.register(Visit)
 class VisitAdmin(admin.ModelAdmin):
-    list_display = ("participant", "date", "startTime", "endTime", "id")
+    list_display = ("participant", "date", "startTime", "endTime")
     list_filter = ("date", "participant__department")
     search_fields = ("participant__anonymousIdentifier",)
     filter_horizontal = ("courses",)
