@@ -5,8 +5,8 @@ from api.models import Course, Department, Participant, Visit
 
 @admin.register(Department)
 class DepartmentAdmin(admin.ModelAdmin):
-    list_display = ("name", "number", "id")
-    search_fields = ("name", "number")
+    list_display = ("name", "id")
+    search_fields = ("name",)
 
 
 @admin.register(Course)

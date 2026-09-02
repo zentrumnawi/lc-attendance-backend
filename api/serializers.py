@@ -6,7 +6,7 @@ from api.models import Course, Department, Participant, Visit
 class DepartmentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Department
-        fields = ["id", "name", "number"]
+        fields = ["id", "name"]
 
 
 class CourseSerializer(serializers.ModelSerializer):
@@ -18,7 +18,7 @@ class CourseSerializer(serializers.ModelSerializer):
 class ParticipantSerializer(serializers.ModelSerializer):
     class Meta:
         model = Participant
-        fields = ["id", "anonymousIdentifier", "department"]
+        fields = ["id", "anonymousIdentifier", "department", "semester"]
 
 
 class VisitSerializer(serializers.ModelSerializer):
