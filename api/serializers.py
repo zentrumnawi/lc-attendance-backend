@@ -11,6 +11,7 @@ class DepartmentSerializer(serializers.ModelSerializer):
 
 class CourseSerializer(serializers.ModelSerializer):
     department_name = serializers.CharField(source="department.name", read_only=True)
+
     class Meta:
         model = Course
         fields = ["id", "department", "name", "department_name"]
