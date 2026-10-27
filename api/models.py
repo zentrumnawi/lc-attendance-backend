@@ -12,6 +12,17 @@ class Department(models.Model):
 
 
 class Course(models.Model):
+    class Scope(models.TextChoices):
+        MATHS = "MATHS", "Mathematics"
+        CHEMISTRY = "CHEMISTRY", "Chemistry"
+        NO_SCOPE = "NO_SCOPE", "No scope"
+
+    scope = models.CharField(
+        max_length=255,
+        choices=Scope.choices,
+        default=Scope.NO_SCOPE,
+    )
+
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     department = models.ForeignKey(
         Department,
